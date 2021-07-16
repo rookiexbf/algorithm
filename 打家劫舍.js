@@ -19,6 +19,7 @@
  * @return {number}
  */
 
+// 迭代
 var rob = function (nums) {
   let length = nums.length;
   if (length == 1) return nums[0];
@@ -33,3 +34,18 @@ var rob = function (nums) {
   }
   return sum;
 };
+
+// 递归
+function rob(nums){
+  let dp = new Array(nums.length).fill(-1)
+  function cal(nums,index){
+    if(index>=nums.length) return 0;
+    if(dp[index]!=-1) return dp[index];
+    let res = Math.max(cal(nums,index+1),cal(nums,index+2)+nums[index])
+    dp[index] = res
+    return res
+  }
+  return cal(nums,0)
+}
+
+
