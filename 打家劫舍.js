@@ -48,4 +48,22 @@ function rob(nums){
   return cal(nums,0)
 }
 
+// 环形数组
+function rob(nums){
+  let length = nums.length;
+  if(length==1) return nums[0]
+  function cal(nums,start,end){
+    let pre1=0;
+    let pre2=0;
+    let sum=0
+    for(let i=end;i>=start;i--){
+      sum = Math.max(pre1,pre2+nums[i]);
+      pre2 = pre1
+      pre1 = sum;
+    }
+    return sum
+  }
+  return Math.max(cal(nums,0,length-2),cal(nums,1,length-1))
+}
+
 
