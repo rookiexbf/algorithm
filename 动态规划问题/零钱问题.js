@@ -8,6 +8,9 @@
 // 链接：https://leetcode-cn.com/problems/coin-change
 // 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 
+// 自顶向下
+// 递归
+// 思路和问题：暴力破解，遍历N叉树。后面发现会超时，用一个map缓存计算结果（剪枝）
 let coinChange = function (coins, amount) {
   let map = new Map();
   function dp(amount) {
@@ -27,4 +30,17 @@ let coinChange = function (coins, amount) {
   return dp(amount);
 };
 
-// 思路和问题：暴力破解，遍历N叉树。后面发现会超时，用一个map缓存计算结果（剪枝）
+// 自底向上
+// 遍历
+let coinChange = function (coins, amount) {
+  let dp = new Array(amount + 1).fill(amount + 1);
+  dp[0] = 0;
+  for (let i = 1; i <= amount; i++) {
+    for (let coin of coins) {
+      if (i - coin < 0) continue;
+      dp[i] = Math.min(dp[i - coin] + 1, dp[i]);
+    }
+  }
+  console.log(dp);
+  return dp[amount] == amount + 1 ? -1 : dp[amount];
+};
