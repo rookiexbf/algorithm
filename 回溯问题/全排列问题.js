@@ -20,6 +20,8 @@
  * @param {number[]} nums
  * @return {number[][]}
  */
+
+// 思路和问题：穷举，在递归的前后时机做选择和撤回
 var permute = function (nums) {
   let res = [];
   let cur = [];
