@@ -14,7 +14,7 @@
  * @return {ListNode}
  */
 
-// 思路:快慢指针
+// 思路:快慢指针，快指针以慢指针2倍速前进
 
 var middleNode = function (head) {
   let fast = head;
