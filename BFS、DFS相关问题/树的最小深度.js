@@ -3,7 +3,6 @@
 // 说明：叶子节点是指没有子节点的节点。
 
 // 思路:广度优先遍历
-
 var minDepth = function (root) {
   if (!root) return 0;
   let queue = [];
