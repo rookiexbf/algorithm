@@ -19,22 +19,21 @@ function debounce(fn,wait,immediate){
 }
 // 简易版本throttle
 function throttle(fn,wait,immediate){
-    let timer = null;
+    let flag = true;
     return function(...args){
         let context = this;
+        if(!flag) return;
+        flag =false;
         if(immediate){
-            let callNow = !timer;
-            timer = setTimeout(() => {
-                timer = null
-            }, wait); 
-            callNow&&fn.apply(context,args)
+            setTimeout(() => {
+                flag = true;
+            }, wait);
+            fn.apply(context,args)
         }else{
-            if(!timer){
-                timer = setTimeout(() => {
-                    fn.apply(context,args)
-                    timer = null
-                }, wait);
-            }
+            setTimeout(() => {
+                fn.apply(context,args)
+                flag = true
+            }, wait);
         }
     }
 }
