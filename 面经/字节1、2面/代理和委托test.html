@@ -5,6 +5,69 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        .triangle {
+            width: 0;
+            height: 0;
+            border-top: 100px solid #f00;
+            border-right: 100px solid #0f0;
+            border-bottom: 100px solid #00f;
+            border-left: 100px solid #ff0;
+        }.tri_top, .tri_right, .tri_bottom, .tri_left{
+       width: 150px;
+       height: 100px;
+       background: #CCCCCC;
+       border-radius: 8px;
+       margin: 50px 50px;
+       position: relative;
+       float: left;
+     }
+     .tri_top:before{
+       content: "";
+       width: 0px;
+       height: 0px;
+       border-left: 10px solid transparent;
+       border-right: 10px solid transparent;
+       border-bottom: 10px solid #CCCCCC;
+       position: absolute;
+       top: -10px;
+       left: 65px;
+     }
+     .tri_right:before{
+       content: "";
+       width: 0px;
+       height: 0px;
+       border-top: 10px solid transparent;
+       border-bottom: 10px solid transparent;
+       border-left: 10px solid #CCCCCC;
+       position: absolute;
+       top: 40px;
+       left: 150px;
+     }
+     .tri_bottom:before{
+       content: "";
+       width: 0px;
+       height: 0px;
+       border-top: 10px solid #CCCCCC;
+       border-left: 10px solid transparent;
+       border-right: 10px solid transparent;
+       position: absolute;
+       top: 100px;
+       left: 70px;
+     }
+     .tri_left:before{
+       content: "";
+       width: 0px;
+       height: 0px;
+       border-top: 10px solid transparent;
+       border-bottom: 10px solid transparent;
+       border-right: 10px solid #CCCCCC;
+       position: absolute;
+       top: 40px;
+       left: -10px;
+     }
+
+    </style>
 </head>
 <body>
     <div id="app">
@@ -15,6 +78,13 @@
         
     </div>
 </body>
+
+<div class="tri_top"></div>         <!--三角形在上边-->
+<div class="tri_right"></div>       <!--三角形在右边-->
+<div class="tri_bottom"></div>      <!--三角形在底边-->
+<div class="tri_left"></div>      
+
+    <div class="triangle"></div>
 <script>
     // 冒泡和捕获都可以做委托
     // event.stopPropagation阻止事件传播，（不只是冒泡）
@@ -29,6 +99,22 @@
         console.log('clickApp')
         event.stopPropagation()
     },true)
-
+    window.onerror = function(message, source, lineno, colno, error) { 
+        debugger
+     }
+     window.addEventListener('error', function(event) { 
+        debugger
+    }, true)
+    function xxx(){
+        const x = 1
+x=2
+    }
+    try {
+         xxx()
+        
+    } catch (error) {
+        debugger
+        throw error
+    }
 </script>
 </html>
